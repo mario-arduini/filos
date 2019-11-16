@@ -1,6 +1,7 @@
 import 'package:filos/bloc.dart';
 import 'package:filos/entity.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
+import 'package:filos/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:filos/face_expression_reader.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MyHomePage(title: "Demo"),
+        home: HomePage(),
       ),
     );
   }
@@ -48,13 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
   double smileProb = 0;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    reader.addListener((){
+    reader.addListener(() {
       print("Getting called");
       print(reader.toString());
       setState(() {
-
         final Face currentFace = reader.value;
         smileProb = currentFace?.smilingProbability ?? 0;
       });
@@ -121,6 +121,84 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class ControlledTextField extends StatefulWidget {
+  final Widget Function(TextEditingController) builder;
+
+  const ControlledTextField({Key key, this.builder}) : super(key: key);
+  @override
+  _ControlledTextFieldState createState() => _ControlledTextFieldState();
+}
+
+class _ControlledTextFieldState extends State<ControlledTextField> {
+  final _controller = TextEditingController();
+
+  void initState() {
+    _controller.addListener(() {
+      print('text=${_controller.text}');
+    });
+    super.initState();
+  }
+
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: _controller,
+    );
+  }
+}
+
+class NewActivityDialog extends StatefulWidget {
+  @override
+  _NewActivityDialogState createState() => _NewActivityDialogState();
+}
+
+class _NewActivityDialogState extends State<NewActivityDialog> {
+  final _controller = TextEditingController();
+  String _title;
+
+  void initState() {
+    _controller.addListener(() {
+      print('text=${_controller.text}');
+    });
+    super.initState();
+  }
+
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('New activity'),
+      content: Column(
+        children: [
+          TextField(
+            controller: _controller,
+            decoration: InputDecoration(hintText: 'Activity title..'),
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        FlatButton(
+          child: Text('Save'),
+          onPressed: () {},
+        ),
+        FlatButton(
+          child: Text('Cancel'),
+          onPressed: () {},
+        ),
+      ],
     );
   }
 }
