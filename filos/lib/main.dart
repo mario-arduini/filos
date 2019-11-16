@@ -1,6 +1,7 @@
 import 'package:filos/bloc.dart';
 import 'package:filos/home_page.dart';
 import 'package:filos/smile_page.dart';
+import 'package:filos/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          textTheme: FilosStyles.textTheme,
         ),
         home: LayoutBuilder(
           builder: (context, constrainsts) {
