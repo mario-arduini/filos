@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.2
+  firebase_ml_vision: ^0.9.3+3
+  camera: ^0.5.6+3
 
   commons:
     path: ../commons
