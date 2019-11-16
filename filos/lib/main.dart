@@ -1,7 +1,7 @@
 import 'package:filos/bloc.dart';
-import 'package:filos/gamification_page.dart';
 import 'package:filos/home_page.dart';
 import 'package:filos/styles.dart';
+import 'package:filos/users_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
             print('constraints=$constrainsts');
             return constrainsts.maxWidth > 800
                 ? HomePage()
-                : GamificationPage();
+                : UsersPage();
           },
         ),
       ),

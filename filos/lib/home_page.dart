@@ -52,6 +52,10 @@ class HomePage extends StatelessWidget {
               ),
             );
           }
+          // User Wallpaper
+          if (index == 2){
+
+          }
           // Food sharing
           if (index == 4) {
             return FoodSharingPage();
