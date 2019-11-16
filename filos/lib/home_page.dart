@@ -1,4 +1,5 @@
 import 'package:filos/food_sharing_page.dart';
+import 'package:filos/smile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -29,21 +30,7 @@ class HomePage extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           // Smile counter
           if (index == 1) {
-            return Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Text(
-                    'Smile counter',
-                    style: Theme.of(context).textTheme.display1,
-                  ),
-                  Text(
-                    '14',
-                    style: Theme.of(context).textTheme.display1,
-                  )
-                ],
-              ),
-            );
+            return SmileReadOnlyPage();
           }
           // Alpaca
           if (index == 5) {
