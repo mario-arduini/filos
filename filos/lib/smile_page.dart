@@ -13,6 +13,9 @@ class _SmilePageState extends State<SmilePage> {
   final FaceExpressionReader reader = FaceExpressionReader();
   int _counter = 0;
   double smileProb = 0;
+  int startedSmiling = 0;
+  bool smiling = false;
+  bool tookSmile = false;
 
   @override
   void initState() {
@@ -23,17 +26,29 @@ class _SmilePageState extends State<SmilePage> {
       setState(() {
         final Face currentFace = reader.value;
         smileProb = currentFace?.smilingProbability ?? 0;
+
+        if(smiling){
+          if(smileProb > 0.7){
+            if(!tookSmile && (new DateTime.now().millisecondsSinceEpoch - startedSmiling)>1000) {
+              _counter++;
+              tookSmile = true;
+            }
+          } else {
+            smiling = false;
+          }
+        } else {
+          if(smileProb > 0.7){
+            smiling = true;
+            tookSmile = false;
+            startedSmiling = new DateTime.now().millisecondsSinceEpoch;
+          }
+        }
       });
     });
   }
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -57,7 +72,7 @@ class _SmilePageState extends State<SmilePage> {
                     style: Theme.of(context).textTheme.display1,
                   ),
                   Text(
-                    '14',
+                    _counter.toString(),
                     style: Theme.of(context).textTheme.display1,
                   )
                 ],
