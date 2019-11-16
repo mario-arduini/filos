@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
           horizontal: _kPadding,
           vertical: _kPadding / 2,
         ),
-        crossAxisCount: 6,
+        crossAxisCount: 8,
         itemCount: 6,
         itemBuilder: (BuildContext context, int index) {
           // Smile counter
@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
           );
         },
         staggeredTileBuilder: (int index) {
-          if (index == 4) return StaggeredTile.count(4, 2);
+          if (index == 4) return StaggeredTile.count(6, 2);
           if (index == 5) return StaggeredTile.count(2, 2);
           return StaggeredTile.count(2, index.isEven ? 2 : 1);
         },

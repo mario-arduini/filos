@@ -1,41 +1,5 @@
 import 'package:meta/meta.dart';
 
-const String _kUserPhotoUrl =
-    'https://images.emojiterra.com/google/android-pie/512px/1f913.png';
-
-const List<User> kFakeUsers = [
-  User(
-    name: 'Tinka',
-    room: 'Room 301',
-    bio: 'This is the first user',
-    imageUrl: _kUserPhotoUrl,
-  ),
-  User(
-    name: 'Mario',
-    room: 'Room 301',
-    bio: 'This is the first user',
-    imageUrl: _kUserPhotoUrl,
-  ),
-  User(
-    name: 'Bella',
-    room: 'Room 301',
-    bio: 'This is the first user',
-    imageUrl: _kUserPhotoUrl,
-  ),
-  User(
-    name: 'David',
-    room: 'Room 301',
-    bio: 'This is the first user',
-    imageUrl: _kUserPhotoUrl,
-  ),
-  User(
-    name: 'Edman',
-    room: 'Room 301',
-    bio: 'This is the first user',
-    imageUrl: _kUserPhotoUrl,
-  ),
-];
-
 class User {
   final String name;
   final String bio;
@@ -48,12 +12,34 @@ class User {
     @required this.bio,
     @required this.imageUrl,
   });
+
+  @override
+  String toString() {
+    return 'User{name: $name, bio: $bio, imageUrl: $imageUrl, room: $room}';
+  }
+}
+
+class FoodSharing {
+  final User owner;
+  final String foodName;
+  final String imageUrl;
+
+  const FoodSharing({
+    @required this.owner,
+    @required this.foodName,
+    @required this.imageUrl,
+  });
+
+  @override
+  String toString() {
+    return 'FoodSharing{owner: $owner, foodName: $foodName}';
+  }
 }
 
 class Activity {
   final String title;
 
-  const Activity({this.title});
+  const Activity({@required this.title});
 }
 
 class Recipe {
