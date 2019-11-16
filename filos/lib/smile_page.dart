@@ -48,6 +48,21 @@ class _SmilePageState extends State<SmilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Card(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text(
+                    'Smile counter',
+                    style: Theme.of(context).textTheme.display1,
+                  ),
+                  Text(
+                    '14',
+                    style: Theme.of(context).textTheme.display1,
+                  )
+                ],
+              ),
+            ),
             Text(
               smileProb.toString(),
             ),

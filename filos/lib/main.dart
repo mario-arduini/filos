@@ -27,37 +27,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class TvApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Provider<Bloc>(
-      builder: (_) => Bloc(),
-      dispose: (_, bloc) => bloc.dispose(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: HomePage(),
-      ),
-    );
-  }
-}
-
-class PhoneApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Provider<Bloc>(
-      builder: (_) => Bloc(),
-      dispose: (_, bloc) => bloc.dispose(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: HomePage(),
-      ),
-    );
-  }
-}
