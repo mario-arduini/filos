@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "370400611021",
+    "firebase_url": "https://filos-junction.firebaseio.com",
+    "project_id": "filos-junction",
+    "storage_bucket": "filos-junction.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370400611021:android:2da434bff62a85ab387784",
+        "android_client_info": {
+          "package_name": "io.filos.filos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370400611021-5fe4d329fp47pbktjp192slang9f63uj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr1kx0u3I--PdTcjBiBrO9X882aJkm9WA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370400611021-5fe4d329fp47pbktjp192slang9f63uj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
