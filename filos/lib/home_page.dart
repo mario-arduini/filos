@@ -1,7 +1,9 @@
 import 'package:filos/food_sharing_page.dart';
+import 'package:filos/gallery_page.dart';
 import 'package:filos/gamification_page.dart';
 import 'package:filos/neighbors_page.dart';
 import 'package:filos/smile_page.dart';
+import 'package:filos/want_to_interact_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -28,7 +30,7 @@ class HomePage extends StatelessWidget {
           vertical: _kPadding / 2,
         ),
         crossAxisCount: 12,
-        itemCount: 11,
+        itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
           // Food sharing
           if (index == 0) {
@@ -45,12 +47,13 @@ class HomePage extends StatelessWidget {
           }
           // Gallery
           if (index == 3) {
-            return Card(child: Center(child: Text('Gallery')));
+//            return Card(child: Center(child: Text('Gallery')));
+            return GalleryPage();
           }
-          // Gallery
+          // Willing to chat
           if (index == 4) {
-            return Card(
-                child: Center(child: Text('Willing to chat, help, chill')));
+//            return Card(child: Center(child: Text('Willing to chat, help, chill')));
+            return WantToInteractPage();
           }
           // Stats and Gamification
           if (index == 5) {
@@ -121,8 +124,6 @@ class HomePage extends StatelessWidget {
           if (index == 8) return StaggeredTile.count(4, 3);
           if (index == 9) return StaggeredTile.count(2, 1);
 
-          if (index == 4) return StaggeredTile.count(6, 2);
-          if (index == 5) return StaggeredTile.count(2, 2);
           return StaggeredTile.count(2, index.isEven ? 2 : 1);
         },
         mainAxisSpacing: _kPadding,

@@ -21,6 +21,8 @@ class Bloc {
   static final _userCollection = Firestore.instance.collection('users');
   static final _foodSharingsCollection =
       Firestore.instance.collection('foodSharing');
+  static final _wantToInteractCollection =
+      Firestore.instance.collection('wantToInteract');
   static final _statisticsSingleton =
       Firestore.instance.collection('statistics').document('singleton');
 
@@ -55,6 +57,18 @@ class Bloc {
   Stream<Statistics> get statistics =>
       _statisticsSingleton.snapshots().map((DocumentSnapshot document) {
         return Statistics(smileCount: document.data[_kSmileCounter]);
+      });
+
+  Stream<List<WantToInteract>> get wantToInteract =>
+      Observable(_wantToInteractCollection.snapshots()).flatMap((snapshot) {
+        return Observable.combineLatest(
+            snapshot.documents.map((document) async* {
+          yield WantToInteract(
+            user: userFromDocument(
+                await (document.data['user'] as DocumentReference).get()),
+            available: document.data['available'],
+          );
+        }), (wti) => wti);
       });
 
   void dispose() {}

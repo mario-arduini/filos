@@ -36,6 +36,21 @@ class FoodSharing {
   }
 }
 
+class WantToInteract {
+  final User user;
+  final bool available;
+
+  WantToInteract({
+    @required this.user,
+    @required this.available,
+  });
+
+  @override
+  String toString() {
+    return 'WantToInteract{user: $user, available: $available}';
+  }
+}
+
 class Activity {
   final String title;
 
