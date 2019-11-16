@@ -1,19 +1,71 @@
+import 'package:filos/bloc.dart';
+import 'package:filos/entity.dart';
 import 'package:filos/face_expression_reader.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class SmilePage extends StatefulWidget {
-  SmilePage({Key key}) : super(key: key);
+class SmileReadOnlyPage extends StatelessWidget {
+  const SmileReadOnlyPage({Key key}) : super(key: key);
 
   @override
-  _SmilePageState createState() => _SmilePageState();
+  Widget build(BuildContext context) {
+    return Consumer<Bloc>(
+      builder: (_, bloc, __) {
+        return StreamBuilder<Statistics>(
+          stream: bloc.statistics,
+          builder: (context, snapshot) {
+            return Card(
+              child: snapshot.hasData
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Text(
+                          'Smile counter',
+                          style: Theme.of(context).textTheme.display1,
+                        ),
+                        Text(
+                          '${snapshot.data.smileCount}',
+                          style: Theme.of(context).textTheme.display1,
+                        ),
+                      ],
+                    )
+                  : const Center(child: CircularProgressIndicator()),
+            );
+          },
+        );
+      },
+    );
+  }
 }
 
-class _SmilePageState extends State<SmilePage> {
-  final FaceExpressionReader reader = FaceExpressionReader();
-  int _counter = 0;
+class SmileIncPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<Bloc>(
+      builder: (_, bloc, __) {
+        return SmileIncrementor(
+          onSmile: () {
+            bloc.incrementSmile();
+          },
+        );
+      },
+    );
+  }
+}
+
+class SmileIncrementor extends StatefulWidget {
+  SmileIncrementor({Key key, this.onSmile}) : super(key: key);
+
+  final VoidCallback onSmile;
+  @override
+  _SmileIncrementorState createState() => _SmileIncrementorState();
+}
+
+class _SmileIncrementorState extends State<SmileIncrementor> {
+  final reader = FaceExpressionReader();
   double smileProb = 0;
-  int startedSmiling = 0;
+  int startTime = 0;
   bool smiling = false;
   bool tookSmile = false;
 
@@ -21,78 +73,33 @@ class _SmilePageState extends State<SmilePage> {
   void initState() {
     super.initState();
     reader.addListener(() {
-      print("Getting called");
-      print(reader.toString());
       setState(() {
         final Face currentFace = reader.value;
         smileProb = currentFace?.smilingProbability ?? 0;
 
-        if(smiling){
-          if(smileProb > 0.7){
-            if(!tookSmile && (new DateTime.now().millisecondsSinceEpoch - startedSmiling)>1000) {
-              _counter++;
+        if (smiling) {
+          if (smileProb > 0.7) {
+            if (!tookSmile &&
+                (DateTime.now().millisecondsSinceEpoch - startTime) > 1000) {
+              widget.onSmile();
               tookSmile = true;
             }
           } else {
             smiling = false;
           }
         } else {
-          if(smileProb > 0.7){
+          if (smileProb > 0.7) {
             smiling = true;
             tookSmile = false;
-            startedSmiling = new DateTime.now().millisecondsSinceEpoch;
+            startTime = DateTime.now().millisecondsSinceEpoch;
           }
         }
       });
     });
   }
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Smile'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Card(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Text(
-                    'Smile counter',
-                    style: Theme.of(context).textTheme.display1,
-                  ),
-                  Text(
-                    _counter.toString(),
-                    style: Theme.of(context).textTheme.display1,
-                  )
-                ],
-              ),
-            ),
-            Text(
-              smileProb.toString(),
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-    );
+    return SmileReadOnlyPage();
   }
 }

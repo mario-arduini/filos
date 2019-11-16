@@ -61,3 +61,14 @@ class Recipe {
 
   const Recipe({@required this.title});
 }
+
+class Statistics {
+  final int smileCount;
+
+  Statistics({this.smileCount});
+
+  @override
+  String toString() {
+    return 'Statistics{smileCount: $smileCount}';
+  }
+}
