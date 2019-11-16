@@ -1,3 +1,4 @@
+import 'package:filos/food_sharing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -66,92 +67,7 @@ class HomePage extends StatelessWidget {
           }
           // Food sharing
           if (index == 4) {
-            return Card(
-              child: Padding(
-                padding: const EdgeInsets.all(_kPadding / 2),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Food sharing',
-                      style: Theme.of(context).textTheme.display1,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Card(
-                          child: Column(
-                            children: <Widget>[
-                              Text('Carrot'),
-                              Container(
-                                height: 180,
-                                width: 180,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        'https://hips.hearstapps.com/ghk.h-cdn.co/assets/18/09/2048x1364/gallery-1519672422-carrots.jpg?resize=480:*'),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Card(
-                          child: Column(
-                            children: <Widget>[
-                              Text('Carrot'),
-                              Container(
-                                height: 180,
-                                width: 180,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        'https://hips.hearstapps.com/ghk.h-cdn.co/assets/18/09/2048x1364/gallery-1519672422-carrots.jpg?resize=480:*'),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Card(
-                          child: Column(
-                            children: <Widget>[
-                              Text('Carrot'),
-                              Container(
-                                height: 180,
-                                width: 180,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        'https://hips.hearstapps.com/ghk.h-cdn.co/assets/18/09/2048x1364/gallery-1519672422-carrots.jpg?resize=480:*'),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Card(
-                          child: Column(
-                            children: <Widget>[
-                              Text('Carrot'),
-                              Container(
-                                height: 180,
-                                width: 180,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        'https://hips.hearstapps.com/ghk.h-cdn.co/assets/18/09/2048x1364/gallery-1519672422-carrots.jpg?resize=480:*'),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            );
+            return FoodSharingPage();
           }
           return Card(
             color: colors[index],
