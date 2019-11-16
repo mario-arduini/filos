@@ -13,5 +13,7 @@ class Bloc {
 
   Stream<List<Activity>> get activities => _activities;
 
+  Stream<List<User>> get users => Stream.value(kFakeUsers);
+
   void dispose() {}
 }
