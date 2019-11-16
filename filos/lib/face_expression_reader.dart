@@ -4,42 +4,44 @@ import 'package:flutter/foundation.dart';
 
 bool isDetecting = false;
 
-Future<CameraDescription> getFrontCamera() async{
-  return await availableCameras().then((cameras)=> cameras.firstWhere(
-      (camera)=> camera.lensDirection == CameraLensDirection.front));
+Future<CameraDescription> getFrontCamera() async {
+  return await availableCameras().then((cameras) => cameras.firstWhere(
+      (camera) => camera.lensDirection == CameraLensDirection.front));
 }
 
 void cameraBytesToDetector({
- @required CameraController camera,
- @required FaceDetector detector,
- @required void updateFace(Face face),
-}){
+  @required CameraController camera,
+  @required FaceDetector detector,
+  @required void updateFace(Face face),
+}) {
   camera.startImageStream((image) {
-     if(isDetecting) return;
+    if (isDetecting) return;
 
-     isDetecting = true;
+    isDetecting = true;
 
-     detector.processImage(FirebaseVisionImage.fromBytes(image.planes[0].bytes, FirebaseVisionImageMetadata(
-       size: camera.value.previewSize,
-       rotation: ImageRotation.rotation270,
-       planeData: []
-     )))
-     .then((faces){
+    detector
+        .processImage(FirebaseVisionImage.fromBytes(
+            image.planes[0].bytes,
+            FirebaseVisionImageMetadata(
+                size: camera.value.previewSize,
+                rotation: ImageRotation.rotation270,
+                planeData: [])))
+        .then((faces) {
       updateFace(faces.isEmpty ? null : faces[0]);
       isDetecting = false;
-     });
+    });
   });
 }
 
 class FaceExpressionReader extends ValueNotifier<Face> {
-  FaceExpressionReader() : super(null){
+  FaceExpressionReader() : super(null) {
     init();
   }
 
   CameraController camera;
   FaceDetector detector;
 
-  void init() async{
+  void init() async {
     camera = CameraController(await getFrontCamera(), ResolutionPreset.low);
     await camera.initialize();
 
@@ -49,13 +51,11 @@ class FaceExpressionReader extends ValueNotifier<Face> {
     ));
 
     cameraBytesToDetector(
-      camera:camera,
-      detector:detector,
-      updateFace: (face){
+      camera: camera,
+      detector: detector,
+      updateFace: (face) {
         value = face;
       },
     );
-
   }
 }
-

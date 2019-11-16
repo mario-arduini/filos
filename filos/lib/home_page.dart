@@ -8,10 +8,24 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StaggeredGridView.countBuilder(
-        padding: EdgeInsets.all(_kPadding),
+        padding: EdgeInsets.symmetric(
+          horizontal: _kPadding,
+          vertical: _kPadding / 2,
+        ),
         crossAxisCount: 6,
         itemCount: 8,
         itemBuilder: (BuildContext context, int index) {
+          if (index == 0) {
+            return Card(
+              color: Colors.blue,
+              child: Center(
+                child: CircleAvatar(
+                  backgroundColor: Colors.green,
+                  child: Text('bb'),
+                ),
+              ),
+            );
+          }
           return Card(
             color: Colors.blue,
             child: Center(
