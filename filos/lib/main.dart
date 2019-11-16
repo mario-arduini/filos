@@ -1,7 +1,7 @@
 import 'package:filos/bloc.dart';
 import 'package:filos/home_page.dart';
 import 'package:filos/styles.dart';
-import 'package:filos/users_page.dart';
+import 'package:filos/neighbors_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,9 +22,7 @@ class MyApp extends StatelessWidget {
         home: LayoutBuilder(
           builder: (context, constrainsts) {
             print('constraints=$constrainsts');
-            return constrainsts.maxWidth > 800
-                ? HomePage()
-                : UsersPage();
+            return constrainsts.maxWidth > 800 ? HomePage() : NeighborsPage();
           },
         ),
       ),

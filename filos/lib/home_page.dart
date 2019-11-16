@@ -1,4 +1,6 @@
 import 'package:filos/food_sharing_page.dart';
+import 'package:filos/gamification_page.dart';
+import 'package:filos/neighbors_page.dart';
 import 'package:filos/smile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -25,11 +27,54 @@ class HomePage extends StatelessWidget {
           horizontal: _kPadding,
           vertical: _kPadding / 2,
         ),
-        crossAxisCount: 8,
-        itemCount: 6,
+        crossAxisCount: 12,
+        itemCount: 11,
         itemBuilder: (BuildContext context, int index) {
-          // Smile counter
+          // Food sharing
+          if (index == 0) {
+            return FoodSharingPage();
+          }
+          // Neighbors
           if (index == 1) {
+//            return Card(child: Center(child: Text('Neighbors')));
+            return NeighborsPage();
+          }
+          // Need to talk
+          if (index == 2) {
+            return Card(child: Center(child: Text('Need to talk')));
+          }
+          // Gallery
+          if (index == 3) {
+            return Card(child: Center(child: Text('Gallery')));
+          }
+          // Gallery
+          if (index == 4) {
+            return Card(
+                child: Center(child: Text('Willing to chat, help, chill')));
+          }
+          // Stats and Gamification
+          if (index == 5) {
+            return GamificationPage();
+          }
+          // News
+          if (index == 6) {
+            return Card(child: Center(child: Text('News')));
+          }
+          // Alpaca
+          if (index == 7) {
+            return Card(child: Center(child: Text('Alpaca')));
+          }
+          // Activities
+          if (index == 8) {
+            return Card(child: Center(child: Text('Activities')));
+          }
+          // Games
+          if (index == 9) {
+            return Card(child: Center(child: Text('Games')));
+          }
+
+          // Smile counter
+          if (index == 2) {
             return SmileReadOnlyPage();
           }
           // Alpaca
@@ -53,15 +98,9 @@ class HomePage extends StatelessWidget {
             );
           }
           // User Wallpaper
-          if (index == 2){
-
-          }
-          // Food sharing
-          if (index == 4) {
-            return FoodSharingPage();
-          }
+          if (index == 2) {}
           return Card(
-            color: colors[index],
+            color: colors[index % colors.length],
             child: Center(
               child: CircleAvatar(
                 backgroundColor: Colors.green,
@@ -71,6 +110,17 @@ class HomePage extends StatelessWidget {
           );
         },
         staggeredTileBuilder: (int index) {
+          if (index == 0) return StaggeredTile.count(8, 3);
+          if (index == 1) return StaggeredTile.count(4, 2);
+          if (index == 2) return StaggeredTile.count(2, 2);
+          if (index == 3) return StaggeredTile.count(2, 2);
+          if (index == 4) return StaggeredTile.count(2, 5);
+          if (index == 5) return StaggeredTile.count(4, 2);
+          if (index == 6) return StaggeredTile.count(2, 4);
+          if (index == 7) return StaggeredTile.count(4, 4);
+          if (index == 8) return StaggeredTile.count(4, 3);
+          if (index == 9) return StaggeredTile.count(2, 1);
+
           if (index == 4) return StaggeredTile.count(6, 2);
           if (index == 5) return StaggeredTile.count(2, 2);
           return StaggeredTile.count(2, index.isEven ? 2 : 1);

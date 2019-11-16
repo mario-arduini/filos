@@ -100,6 +100,7 @@ class _FoodItem extends StatelessWidget {
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     CircularProfileAvatar(
                       foodSharing.owner.imageUrl,
@@ -107,6 +108,7 @@ class _FoodItem extends StatelessWidget {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Text(
                           foodSharing.owner.name,
