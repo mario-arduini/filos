@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             print('constraints=$constrainsts');
             return constrainsts.maxWidth > 800
                 ? HomePage()
-                : SmileIncPage();
+                : AlpacaPage();
           },
         ),
       ),
