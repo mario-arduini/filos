@@ -19,7 +19,7 @@ class GetInvolvedPage extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.fitHeight,
                   image: NetworkImage(
                       'https://cdn.discordapp.com/attachments/644945527909384217/645514192589160458/alpaca_qr.png'),
                 ),

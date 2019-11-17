@@ -80,7 +80,7 @@ class _SmileIncrementorState extends State<SmileIncrementor> {
         if (smiling) {
           if (smileProb > 0.7) {
             if (!tookSmile &&
-                (DateTime.now().millisecondsSinceEpoch - startTime) > 1000) {
+                (DateTime.now().millisecondsSinceEpoch - startTime) > 600) {
               widget.onSmile();
               tookSmile = true;
             }

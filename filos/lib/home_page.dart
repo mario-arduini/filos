@@ -128,7 +128,7 @@ class HomePage extends StatelessWidget {
           if (index == 1) return StaggeredTile.count(4, 2);
           if (index == 2) return StaggeredTile.count(2, 2);
           if (index == 3) return StaggeredTile.count(2, 2);
-          if (index == 4) return StaggeredTile.count(2, 5);
+          if (index == 4) return StaggeredTile.count(2, 3);
           if (index == 5) return StaggeredTile.count(4, 2);
           if (index == 6) return StaggeredTile.count(2, 4);
           if (index == 7) return StaggeredTile.count(4, 4);
