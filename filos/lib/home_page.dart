@@ -92,7 +92,12 @@ class HomePage extends StatelessWidget {
           }
           // Activities
           if (index == 8) {
-            return Card(child: Center(child: Text('Activities')));
+            return Card(
+              child: Image.network(
+                "https://media.discordapp.net/attachments/644945527909384217/645488342187900928/hiking.png?width=400&height=300",
+                 fit: BoxFit.fill,
+              ),
+            );
           }
           // Games
           if (index == 9) {

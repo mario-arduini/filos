@@ -15,10 +15,11 @@ class WantToInteractPage extends StatelessWidget {
               radius: 20.0,
             ),
             Align(
-              alignment: Alignment.bottomRight,
+              alignment: Alignment.center,
               child: Icon(
                 Icons.remove_circle_outline,
                 color: wti.available ? Colors.green : Colors.red,
+                size: 50.0,
               ),
             ),
           ],
@@ -31,6 +32,7 @@ class WantToInteractPage extends StatelessWidget {
           children: <Widget>[
             Text(wti.user.name),
             Text(wti.user.room),
+
           ],
         ),
       ],
