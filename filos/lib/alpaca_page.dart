@@ -1,5 +1,6 @@
 import 'package:filos/entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_gifimage/flutter_gifimage.dart';
 import 'package:provider/provider.dart';
 
@@ -87,31 +88,62 @@ class _AlpacaPageState extends State<AlpacaPage> with SingleTickerProviderStateM
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  snapshot.hasData ?
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: animating ? <Widget>[
-                        Text("Such a beautiful smile "),
-                        Icon(
-                          Icons.mood,
-                          size: 30,
-                          color: Colors.white,
-                        )
-                      ]
-                      : <Widget>[
-                        Text("Have a lovely day, gorgeous "),
-                        Icon(
-                          Icons.favorite,
-                          color: Colors.pinkAccent,
-                          size: 30,
-                        )
-                      ],
-                    ) : Text("Getting counter"),
-                  snapshot.hasData
-                      ? GifImage(
-                    controller: _controller,
-                    image: AssetImage("images/animation.gif"),
-                  ) : const Center(child: CircularProgressIndicator()),
+                  Expanded(
+
+                    child: snapshot.hasData ?
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: animating ? <Widget>[
+                          Expanded(
+                            child: Text("Such a beautiful smile ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 30
+                              ),),
+                          ),
+                          Icon(
+                            Icons.mood,
+                            size: 50,
+                            color: Colors.white,
+                          )
+                        ]
+                        : <Widget>[
+                          Expanded(
+                            child: Text("Have a lovely day, gorgeous ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 30
+                              ),),
+                          ),
+                          Icon(
+                            Icons.favorite,
+                            color: Colors.pinkAccent,
+                            size: 50,
+                          )
+                        ],
+                      ) : Text("Getting counter"),
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+
+                        child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: snapshot.hasData
+                            ? Text(snapshot.data.smileCount.toString()+" smiles")
+                            : Text("Getting smiles"),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 6,
+                        child: snapshot.hasData
+                            ? GifImage(
+                          controller: _controller,
+                          image: AssetImage("images/animation.gif"),
+                        ) : const Center(child: CircularProgressIndicator()),
+                      ),
+                    ],
+                  ),
                 ],
               )
             );
