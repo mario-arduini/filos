@@ -26,6 +26,7 @@ class _AlpacaPageState extends State<AlpacaPage> with SingleTickerProviderStateM
     super.initState();
     _controller = GifController(vsync: this);
     _controller.value = 0;
+    animating = false;
 
   }
 
@@ -46,14 +47,14 @@ class _AlpacaPageState extends State<AlpacaPage> with SingleTickerProviderStateM
         if(lastAnimated<counter){
 
           Future.delayed(Duration(milliseconds: 20), () {
-            _controller.value= 41;
+            _controller.value= 47;
 
             setState(() {
               lastAnimated = counter;
               animating = true;
             });
 
-            _controller.animateTo(45,duration: Duration(milliseconds: 400));
+            _controller.animateTo(57,duration: Duration(milliseconds: 400));
 
             Future.delayed(Duration(milliseconds: 450),(){
               _controller.repeat(min:41,max:45,period: Duration(milliseconds: 500));
@@ -65,7 +66,7 @@ class _AlpacaPageState extends State<AlpacaPage> with SingleTickerProviderStateM
           });
 
         } else {
-          _controller.repeat(min:41,max:45,period: Duration(milliseconds: 500));
+          //_controller.repeat(min:41,max:45,period: Duration(milliseconds: 500));
         }
       }
     }
@@ -82,11 +83,25 @@ class _AlpacaPageState extends State<AlpacaPage> with SingleTickerProviderStateM
               handleAlpaca(snapshot.data.smileCount);
 
             return Card(
-              child: snapshot.hasData
-                  ? GifImage(
-                controller: _controller,
-                image: AssetImage("images/animation.gif"),
-              ) : const Center(child: CircularProgressIndicator())
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    snapshot.hasData ?
+                      Text(
+                        "Smile count is "+ snapshot.data.smileCount.toString()+
+                            (!animating ?
+                              "\nHave a lovely day"
+                                : "\nSuch a beautiful smile"),
+                        textAlign: TextAlign.center,
+                      ) : Text("Getting counter"),
+                    snapshot.hasData
+                        ? GifImage(
+                      controller: _controller,
+                      image: AssetImage("images/animation.gif"),
+                    ) : const Center(child: CircularProgressIndicator()),
+                  ],
+                ),
+              )
             );
           },
         );
