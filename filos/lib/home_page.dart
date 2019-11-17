@@ -2,6 +2,7 @@ import 'package:filos/alpaca_page.dart';
 import 'package:filos/food_sharing_page.dart';
 import 'package:filos/gallery_page.dart';
 import 'package:filos/gamification_page.dart';
+import 'package:filos/get_involved_page.dart';
 import 'package:filos/need_to_talk_page.dart';
 import 'package:filos/neighbors_page.dart';
 import 'package:filos/smile_page.dart';
@@ -33,7 +34,7 @@ class HomePage extends StatelessWidget {
           vertical: _kPadding / 2,
         ),
         crossAxisCount: 12,
-        itemCount: 10,
+        itemCount: 11,
         itemBuilder: (BuildContext context, int index) {
           // Food sharing
           if (index == 0) {
@@ -78,11 +79,14 @@ class HomePage extends StatelessWidget {
               ),
             );
           }
-          // Games
+          // Get Involved
           if (index == 9) {
+            return GetInvolvedPage();
+          }
+          // Games
+          if (index == 10) {
             return Card(child: Center(child: Text('Games')));
           }
-
           // Smile counter
           if (index == 2) {
             return SmileReadOnlyPage();
@@ -129,7 +133,8 @@ class HomePage extends StatelessWidget {
           if (index == 6) return StaggeredTile.count(2, 4);
           if (index == 7) return StaggeredTile.count(4, 4);
           if (index == 8) return StaggeredTile.count(4, 3);
-          if (index == 9) return StaggeredTile.count(2, 1);
+          if (index == 9) return StaggeredTile.count(2, 2);
+          if (index == 10) return StaggeredTile.count(2, 1);
 
           return StaggeredTile.count(2, index.isEven ? 2 : 1);
         },
