@@ -1,3 +1,4 @@
+import 'package:filos/alpaca_page.dart';
 import 'package:filos/bloc.dart';
 import 'package:filos/gamification_page.dart';
 import 'package:filos/home_page.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
             print('constraints=$constrainsts');
             return constrainsts.maxWidth > 800
                 ? HomePage()
-                : NewsPage();
+                : SmileIncPage();
           },
         ),
       ),

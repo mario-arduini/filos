@@ -1,3 +1,4 @@
+import 'package:filos/alpaca_page.dart';
 import 'package:filos/food_sharing_page.dart';
 import 'package:filos/gallery_page.dart';
 import 'package:filos/gamification_page.dart';
@@ -44,7 +45,28 @@ class HomePage extends StatelessWidget {
           }
           // Need to talk
           if (index == 2) {
-            return Card(child: Center(child: Text('Need to talk')));
+            return Card(child:Stack(
+              children: <Widget>[
+                Center(
+                  child: Icon(
+                    Icons.favorite,
+                    color: Colors.pinkAccent,
+                    semanticLabel: "Heart Icon",
+                    size: 250.0,
+                  ),
+                ),
+                Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                  'Need to\ntalk',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white
+                  ),
+                ))
+              ],
+            ));
           }
           // Gallery
           if (index == 3) {
@@ -66,7 +88,7 @@ class HomePage extends StatelessWidget {
           }
           // Alpaca
           if (index == 7) {
-            return Card(child: Center(child: Text('Alpaca')));
+            return AlpacaPage();
           }
           // Activities
           if (index == 8) {
