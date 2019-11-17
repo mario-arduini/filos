@@ -14,9 +14,7 @@ class WantToInteractPage extends StatelessWidget {
             wti.user.imageUrl,
             radius: 20.0,
           ),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-          ),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 12.0)),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
