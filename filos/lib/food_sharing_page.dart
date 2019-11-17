@@ -17,7 +17,7 @@ class FoodSharingPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(_kPadding / 4),
             child: Text(
-              'Food sharing',
+              'Leftovers looking for a new home',
               style: Theme.of(context).textTheme.display1,
             ),
           ),

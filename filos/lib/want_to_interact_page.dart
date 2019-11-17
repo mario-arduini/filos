@@ -52,7 +52,7 @@ class WantToInteractPage extends StatelessWidget {
                   return Column(
                     children: <Widget>[
                       Text(
-                        'Want to interact',
+                        'At home and happy to mingle',
                         style: Theme.of(context).textTheme.display1,
                       ),
                       _interactWidget(snapshot.data[0]),
