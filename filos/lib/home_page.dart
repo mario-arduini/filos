@@ -2,6 +2,7 @@ import 'package:filos/alpaca_page.dart';
 import 'package:filos/food_sharing_page.dart';
 import 'package:filos/gallery_page.dart';
 import 'package:filos/gamification_page.dart';
+import 'package:filos/need_to_talk_page.dart';
 import 'package:filos/neighbors_page.dart';
 import 'package:filos/smile_page.dart';
 import 'package:filos/want_to_interact_page.dart';
@@ -40,33 +41,11 @@ class HomePage extends StatelessWidget {
           }
           // Neighbors
           if (index == 1) {
-//            return Card(child: Center(child: Text('Neighbors')));
             return NeighborsPage();
           }
           // Need to talk
           if (index == 2) {
-            return Card(child:Stack(
-              children: <Widget>[
-                Center(
-                  child: Icon(
-                    Icons.favorite,
-                    color: Colors.pinkAccent,
-                    semanticLabel: "Heart Icon",
-                    size: 250.0,
-                  ),
-                ),
-                Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                  'Need to\ntalk',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.white
-                  ),
-                ))
-              ],
-            ));
+            return NeedToTalkPage();
           }
           // Gallery
           if (index == 3) {
@@ -92,7 +71,12 @@ class HomePage extends StatelessWidget {
           }
           // Activities
           if (index == 8) {
-            return Card(child: Center(child: Text('Activities')));
+            return Card(
+              child: Image.network(
+                "https://media.discordapp.net/attachments/644945527909384217/645488342187900928/hiking.png?width=400&height=300",
+                 fit: BoxFit.fill,
+              ),
+            );
           }
           // Games
           if (index == 9) {

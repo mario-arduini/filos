@@ -26,7 +26,7 @@ class GamificationPage extends StatelessWidget {
                 ),
               ),
               Text(
-                'The Smiling House',
+                'Food Sharing Stats',
                 style: Theme.of(context).textTheme.display1,
               )
             ],

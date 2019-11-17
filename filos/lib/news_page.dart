@@ -12,27 +12,28 @@ class NewsPage extends StatelessWidget {
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Container(
-                      height: 200,
-                      width: 400,
-                      padding: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.fitWidth,
-                          image: NetworkImage(
-                              'https://www.ayy.fi/sites/g/files/flghsv231/files/styles/2_3_1380w_600h_n/public/2019-11/yhdistyskoulutuskuva_1_0.png?h=9550b3ad&itok=UDg0h0u1'),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Container(
+                        height: 170,
+                        width: 400,
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.fitWidth,
+                            image: NetworkImage(
+                                'https://www.ayy.fi/sites/g/files/flghsv231/files/styles/2_3_1380w_600h_n/public/2019-11/yhdistyskoulutuskuva_1_0.png?h=9550b3ad&itok=UDg0h0u1'),
+                          ),
                         ),
                       ),
-                    ),
-                    Text(
-                      'Association Event',
-                      textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.display1,
-                    ),
-                  ],
+                      Text(
+                        'Association Event',
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -43,7 +44,7 @@ class NewsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Container(
-                      height: 300,
+                      height: 220,
                       width: 400,
                       padding: EdgeInsets.all(10.0),
                       decoration: BoxDecoration(
@@ -57,7 +58,6 @@ class NewsPage extends StatelessWidget {
                     Text(
                         'Humbolt Prize awarded to Olli Ikkala',
                         textAlign: TextAlign.start,
-                        style: Theme.of(context).textTheme.display1,
                       ),
                   ],
                 ),

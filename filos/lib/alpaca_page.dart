@@ -54,9 +54,9 @@ class _AlpacaPageState extends State<AlpacaPage> with SingleTickerProviderStateM
               animating = true;
             });
 
-            _controller.animateTo(57,duration: Duration(milliseconds: 400));
+            _controller.animateTo(57,duration: Duration(milliseconds: 700));
 
-            Future.delayed(Duration(milliseconds: 450),(){
+            Future.delayed(Duration(milliseconds: 750),(){
               _controller.repeat(min:41,max:45,period: Duration(milliseconds: 500));
               setState(() {
                 animating = false;
@@ -83,24 +83,36 @@ class _AlpacaPageState extends State<AlpacaPage> with SingleTickerProviderStateM
               handleAlpaca(snapshot.data.smileCount);
 
             return Card(
-              child: Center(
-                child: Column(
-                  children: <Widget>[
-                    snapshot.hasData ?
-                      Text(
-                        "Smile count is "+ snapshot.data.smileCount.toString()+
-                            (!animating ?
-                              "\nHave a lovely day"
-                                : "\nSuch a beautiful smile"),
-                        textAlign: TextAlign.center,
-                      ) : Text("Getting counter"),
-                    snapshot.hasData
-                        ? GifImage(
-                      controller: _controller,
-                      image: AssetImage("images/animation.gif"),
-                    ) : const Center(child: CircularProgressIndicator()),
-                  ],
-                ),
+              color: Color.fromARGB(255, 167, 219, 215),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  snapshot.hasData ?
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: animating ? <Widget>[
+                        Text("Such a beautiful smile "),
+                        Icon(
+                          Icons.mood,
+                          size: 30,
+                          color: Colors.white,
+                        )
+                      ]
+                      : <Widget>[
+                        Text("Have a lovely day, gorgeous "),
+                        Icon(
+                          Icons.favorite,
+                          color: Colors.pinkAccent,
+                          size: 30,
+                        )
+                      ],
+                    ) : Text("Getting counter"),
+                  snapshot.hasData
+                      ? GifImage(
+                    controller: _controller,
+                    image: AssetImage("images/animation.gif"),
+                  ) : const Center(child: CircularProgressIndicator()),
+                ],
               )
             );
           },
