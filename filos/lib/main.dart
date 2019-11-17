@@ -1,8 +1,5 @@
-import 'package:filos/alpaca_page.dart';
 import 'package:filos/bloc.dart';
-import 'package:filos/gamification_page.dart';
 import 'package:filos/home_page.dart';
-import 'package:filos/news_page.dart';
 import 'package:filos/smile_page.dart';
 import 'package:filos/styles.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +20,9 @@ class MyApp extends StatelessWidget {
           textTheme: FilosStyles.textTheme,
         ),
         home: LayoutBuilder(
-          builder: (context, constrainsts) {
-            print('constraints=$constrainsts');
-            return constrainsts.maxWidth > 800
-                ? HomePage()
-                : SmileIncPage();
+          builder: (context, constraints) {
+            print('constraints=$constraints');
+            return constraints.maxWidth > 800 ? HomePage() : SmileIncPage();
           },
         ),
       ),
