@@ -6,36 +6,32 @@ import 'package:provider/provider.dart';
 
 class WantToInteractPage extends StatelessWidget {
   Widget _interactWidget(WantToInteract wti) {
-    return Row(
-      children: <Widget>[
-        Stack(
-          children: <Widget>[
-            CircularProfileAvatar(
-              wti.user.imageUrl,
-              radius: 20.0,
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Icon(
-                Icons.remove_circle_outline,
-                color: wti.available ? Colors.green : Colors.red,
-                size: 50.0,
-              ),
-            ),
-          ],
-        ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(wti.user.name),
-            Text(wti.user.room),
-
-          ],
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: <Widget>[
+          CircularProfileAvatar(
+            wti.user.imageUrl,
+            radius: 20.0,
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(wti.user.name),
+              Text(wti.user.room),
+            ],
+          ),
+          Expanded(child: Container()),
+          Icon(
+            wti.available ? Icons.check_circle : Icons.remove_circle,
+            color: wti.available ? Colors.green : Colors.red,
+            size: 24.0,
+          ),
+        ],
+      ),
     );
   }
 
@@ -57,7 +53,9 @@ class WantToInteractPage extends StatelessWidget {
                         'Want to interact',
                         style: Theme.of(context).textTheme.display1,
                       ),
-                      _interactWidget(snapshot.data[0]),
+                      ...snapshot.data
+                          .map((wti) => _interactWidget(wti))
+                          .toList(),
                     ],
                   );
                 });

@@ -67,7 +67,7 @@ packages:
   commons:
     dependency: "direct main"
     description:
-      path: "..\\commons"
+      path: "../commons"
       relative: true
     source: path
     version: "0.0.0"
@@ -135,7 +135,7 @@ packages:
   flutter_commons:
     dependency: "direct main"
     description:
-      path: "..\\flutter_commons"
+      path: "../flutter_commons"
       relative: true
     source: path
     version: "0.0.0"
